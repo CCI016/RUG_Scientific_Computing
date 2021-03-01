@@ -26,7 +26,7 @@ fprintf('initial fraction of living cells=%f\n',sum(sum(abs(A)))/n^2);
 % The living cells are white, the dead cells black. 
 figure;                              % open a figure window
 imHandle = imagesc(A,[0 1]);         % display the matrix A as an image. 
-colorbar                             % The value range of A is [0 1].
+                                     % The value range of A is [0 1].
 colormap(gray);                      % set a gray scale color table
 
 % Write the image to a PNG file
@@ -43,7 +43,6 @@ A1(2:n+1,2:n+1)=A;                   % Insert matrix A in matrix A1
 % occur between successive generations.
 
 % Here comes your code ....
-pause(1)
 for g = 1 : max_gen
     A_current = A1;
     for i = 2 : (n + 1) %Forul pentru randuri
@@ -71,10 +70,8 @@ for g = 1 : max_gen
     set(imHandle, 'CData' , A1);
     drawnow ;
     pause(0.1);
-    if (isequal(A1,A_current) == true)
-        fprintf('fraction of living cells=%f\n',sum(sum(abs(A_current)))/n^2);
-        imfile = [imname,'_n=',int2str(n),'_p=',num2str(p),'_gen=',int2str(g),'.png'];
-        imwrite(A1, imfile);
+    if (isequal(A1,A_current == true))
+        fprintf('initial fraction of living cells=%f\n',sum(sum(abs(A1)))/n^2);
         break;    
     end
     A_current = A1;
