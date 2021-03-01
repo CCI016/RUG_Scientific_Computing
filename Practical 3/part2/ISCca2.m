@@ -11,8 +11,8 @@ close all                            % close open figure windows
 clear all;                           % remove items from the workspace
 
 n=64;                                % number of cells horizontally/vertically
-p=0.6;                               % probability that a cell is sleeping
-q = 0.2;                             % probability that a cell is alive
+p=0.2;                               % probability that a cell is alive
+q = 0.7;                             % probability that a cell is sleeping
 max_gen=100;                         % maximal number of generations
 
 % Initialize matrix A 

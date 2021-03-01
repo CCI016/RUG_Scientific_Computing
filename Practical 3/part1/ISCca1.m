@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Introduction to Scientific Computing - WBCS14003              %
 %                                                               %
 %  Simulate spatial pattern formation in Matlab                 %
@@ -11,7 +11,7 @@ close all                            % close open figure windows
 clear all;                           % remove items from the workspace
 
 n=64;                                % number of cells horizontally/vertically
-p=0.6;                               % probability that a cell is alive 
+p=0.2;                               % probability that a cell is alive 
 max_gen=100;                         % maximal number of generations
 
 % Initialize matrix A 
@@ -45,45 +45,35 @@ A1(2:n+1,2:n+1)=A;                   % Insert matrix A in matrix A1
 % Here comes your code ....
 for g = 1 : max_gen
     A_current = A1;
-    for i = 2 : (n + 1) %Forul pentru randuri
-        for j = 2 : (n + 1)  %Forul pentru coloane
-            % doua ifuri in foul acesta verifica daca celula e vie sau
-            % moarta
-            if (A_current(i,j) == 0) % e moarta
-                x =  getValue(A_current, 1, i, j); %vede daca in apropiere sunt mai mult de 4 vii
-                if (x == 1) %verifica daca trebuie de inviat
-                    A1(i,j) = 1; % o invie
+    for i = 2 : (n + 1)
+        for j = 2 : (n + 1)   
+            if (A_current(i,j) == 0)
+                x =  getValue(A_current, 1, i, j); 
+                if (x == 1) 
+                    A1(i,j) = 1; 
                 end
             end
                 
-            if (A_current(i,j) == 1) % e vie
-                x = getValue(A_current, 0, i, j);  %vede daca in apropiere sunt mai mult de 4 morti
+            if (A_current(i,j) == 1)
+                x = getValue(A_current, 0, i, j); 
                 if (x == 1)
-                    A1(i,j) = 0; % o omoara nahui
+                    A1(i,j) = 0;
                 end
             end
         end  
     end
-    %aici prosta se printeaza si se verifica daca am ajuns la final, poti
-    %sa nu vnicaesti
-    % treb di pus si saveul la imagine, iasna?
     set(imHandle, 'CData' , A1);
     drawnow ;
     pause(0.1);
     if (isequal(A1,A_current == true))
         fprintf('initial fraction of living cells=%f\n',sum(sum(abs(A1)))/n^2);
+        imfile = [imname,'_n=',int2str(n),'_p=',num2str(p),'_gen=',int2str(g),'.png'];
+        imwrite(A1, imfile);               
         break;    
     end
     A_current = A1;
 end
 
-
-%crce functia asta lucreaza asa:
-% inchipuieti un patrat de 3x3 si celula pe care o verificam e in centru
-% pai ea verifica daca ce-i inafara satisface conidtia, gen numara cati
-% morti sau vii sunt, eu ii dau toata matricea(ea plbm va lucra daor cu un
-% patrat 3x3), stateul asta ce sa caute(0 morti, 1 viu), row si col asta-i
-% pozitia la celula noastra
 function x=getValue(Arr, state, row, col)
     counter = 0;
     for r = (row - 1) : (row + 1)
