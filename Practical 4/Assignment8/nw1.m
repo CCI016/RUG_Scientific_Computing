@@ -12,7 +12,6 @@ g = 5;
 
 % Allocating enough memory for the resulting matrix
 D = zeros(len_s + 1, len_t + 1);
-P = repmat('*',[len_s + 1, len_t + 1])
 
 % Needleman-Wunsch Algorithm (9.1 in Reader)
 
