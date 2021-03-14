@@ -24,7 +24,7 @@ for i = 2 : (len_s + 1)
         match = D(i - 1, j - 1) + w(s(1, i - 1), t(1,j - 1), p, q);
         delete = D(i - 1, j) + g;
         insert = D(i, j - 1) + g;
-        D(i,j) = minimal(match, delete, insert);
+        D(i,j) = min([match, delete, insert]);
     end
 end
 
@@ -33,17 +33,5 @@ function x = w(a, b, p, q)
         x = p;
     else
         x = q;
-    end
-end
-
-function x = minimal(a,b,c)
-    if (a > b && a > c)
-        x = a;
-    end
-    if (b > c && b > a)
-        x = b;
-    end
-    if (c > a && c > a)
-        x = c;
     end
 end
