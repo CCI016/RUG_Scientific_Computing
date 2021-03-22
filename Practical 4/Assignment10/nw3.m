@@ -92,16 +92,16 @@ disp(t_string);
 
 % Writing the output of all the parts (matrix D, matrix P, Alignment) into a single file
 output=fopen('nw3−output.txt', 'w');
-fprintf(output,'Name: <Cainarean Constantin(s4142152) && Denis Garabajiu(s4142551) >\n');
+fprintf(output,'Name : <Cainarean Constantin(S4142152) && Denis Garabajiu(S4142551) >\n');
 fprintf(output,'IBC, Practical 4 \n\n');
 
-  fprintf(output,'\n\nString s:\n');
+  fprintf(output,'\n\nString S: ');
   for i=1:length(s)
-    fprintf(output,'%s',s(i));
+    fprintf(output,'%2c',s(i));
   end
-  fprintf(output,'\n\nString t:\n');
+  fprintf(output,'\n\nString T: ');
   for i=1:length(t)
-    fprintf(output,'%s',t(i));
+    fprintf(output,'%2c',t(i));
   end
 
   fprintf(output,'\n\nMatrix D:\n\n');

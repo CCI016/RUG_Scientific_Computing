@@ -1,1 +1,38 @@
-1
+Name : <Cainarean Constantin(S4142152) && Denis Garabajiu(S4142551) >
+IBC, Practical 4 
+
+
+
+String S:  G G A A T G G
+
+String T:  A T G
+
+Matrix D:
+
+   0   5  10  15
+   5   4   9  10
+  10   9   8   9
+  15  10  13  12
+  20  15  14  17
+  25  20  15  18
+  30  25  20  15
+  35  30  25  20
+
+
+Matrix P:
+
+ * - - -
+ | \ \ \
+ | \ \ \
+ | \ \ \
+ | \ \ \
+ | | \ \
+ | | | \
+ | | | \
+
+
+Alignment:
+
+ G G A A T G G
+       | |   |
+ - - - A T - G
