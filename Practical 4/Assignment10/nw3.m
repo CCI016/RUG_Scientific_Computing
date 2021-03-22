@@ -4,11 +4,14 @@ t=fgetl (in);
 fclose (in);
 len_s = length(s) ; 
 len_t = length(t);
-s_string = ''; % for our commodity we decided to chage t_al, s_al and l_al into these variables.
+
+% For our commodity and overall readability we decided to chage t_al, s_al and l_al into the fpllowing variables.
+s_string = '';
 t_string = '';
 line_string = '';
 row = len_s + 1;
 column = len_t + 1;
+
 % Test values from the assignment
 p = 0;
 q = 4;
@@ -63,12 +66,12 @@ while (row > 0 && column > 0)
     end
     
     if (P(row,column) == '\')
-        if (s(row - 1) ~= t(column - 1))
+        if (s(row - 1) ~= t(column - 1)) % Mismatch
             line_string = [' ', line_string];
             t_string = [t(column - 1), t_string];
             s_string = [s(row - 1), s_string];
         else
-            line_string = ['|', line_string];
+            line_string = ['|', line_string]; % Match
             t_string = [t(column - 1), t_string];
             s_string = [s(row - 1), s_string];
         end
@@ -82,9 +85,15 @@ while (row > 0 && column > 0)
     end
 end
 
+% Displaying the Alignment in the console
+disp(s_string);
+disp(line_string);
+disp(t_string);
+
+% Writing the output of all the parts (matrix D, matrix P, Alignment) into a single file
 output=fopen('nw3−output.txt', 'w');
 fprintf(output,'Name: <Cainarean Constantin(s4142152) && Denis Garabajiu(s4142551) >\n');
-fprintf(output,'IBC, Practical 3\n\n');
+fprintf(output,'IBC, Practical 4 \n\n');
 
   fprintf(output,'\n\nString s:\n');
   for i=1:length(s)
@@ -114,19 +123,19 @@ fprintf(output,'IBC, Practical 3\n\n');
 
   fprintf(output,'\n\nAlignment:\n\n');
   
-  for i = 1:len_s
+  for i = 1:length(s_string)
       fprintf(output, '%2c', s_string(i));
   end
 
   fprintf(output,'\n');
   
-  for i = 1:len_s
+  for i = 1:length(line_string)
       fprintf(output, '%2c', line_string(i));
   end
   
   fprintf(output,'\n');
   
-  for i = 1:len_s
+  for i = 1:length(t_string)
       fprintf(output, '%2c', t_string(i));
   end
   fclose(output);                            % close file

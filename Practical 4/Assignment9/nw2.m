@@ -42,6 +42,7 @@ for i = 2 : (len_s + 1)
     end
 end
 
+% Display the matrices with the layout described in the assignment
 fprintf("D=\n");
 disp(D);
 fprintf("P=\n");

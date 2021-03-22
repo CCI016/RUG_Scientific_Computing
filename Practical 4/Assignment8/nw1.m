@@ -32,6 +32,8 @@ for i = 2 : (len_s + 1)
     end
 end
 
+disp(D); % Displays the resulting matrix D
+
 % Function to compute the output value of the scoring matrix.
 function val = w(a, b, p, q)
     if (a == b) 
